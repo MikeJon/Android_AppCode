@@ -1,0 +1,27 @@
+{
+    "password": "HappyUser",
+    "username": "happyuser",
+    "port_ext": "33070",
+    "ip_ext": "180.153.152.33",
+    "version": "1.0",
+    "alltime": "3000",
+    "imagelist": [
+        {
+            "url": "path",
+            "order": "1",
+            "time": "2000"
+        },
+        {
+            "url": "path",
+            "order": "2",
+            "time": "1000"
+        }
+    ],
+    "RemoteFx": "F0:72:8C:65:00:C2",
+    "deskback": "0",
+    "font": "0",
+    "deskelement": "0",
+    "dragwindowns": "0",
+    "animation": "0",
+    "styles": "0"
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+    <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:id="@+id/contentparent"
+        >
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical" 
+        android:id="@+id/content_0"
+        >
+        <Button android:layout_width="200dp"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/drawblelogin"
+	        android:text="3G模式"
+	        android:id="@+id/btn_3g"
+	        android:textStyle="bold"
+        />
+        <Button 
+            android:layout_width="200dp"
+	        android:layout_height="wrap_content"
+	        android:text="wifi模式"
+	        android:background="@drawable/drawblelogin"
+	        android:textStyle="bold"
+	        android:id="@+id/btn_wifi"
+	        android:layout_marginTop="10dp"
+        />
+        </LinearLayout>
+        <include 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/setings"
+            android:id="@+id/content"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+</LinearLayout>

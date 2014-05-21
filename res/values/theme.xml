@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+    <style name="Theme.Settings" parent="android:Theme.Light">
+  		<item name="android:listSeparatorTextViewStyle">@style/SettingsCategory</item>
+    </style>
+    <style name="Theme.Main" parent="android:Theme.Light">
+    </style>
+    <style name="SettingsCategory">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">25dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">5sp</item>        
+        <item name="android:textColor">@color/separator_text_color</item>
+        <item name="android:layout_margin">2dp</item>
+		<item name="android:background">@drawable/separator_background</item>
+        </style>
+    <style name="ButtonText">
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+    <style name="LabelText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+    <style name="GetStartedHeaderText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+    <style name="GetStartedText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        
+    </style>
+     <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">false</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/holo_blue_dark</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+    
+   <style 
+        name="dialogsty1" parent="android:Animation">
+       <item name="@android:windowEnterAnimation">@anim/dialog_push_down_in</item>
+       <item name="@android:windowExitAnimation">@anim/push_down_out</item>
+    </style>
+    <style 
+        name="dialogsty2" parent="android:Animation">
+       <item name="@android:windowEnterAnimation">@anim/dialog_push_down_in</item>
+       <item name="@android:windowExitAnimation">@anim/push_up_out</item>
+    </style>
+</resources>

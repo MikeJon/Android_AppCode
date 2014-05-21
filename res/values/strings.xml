@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>   
+   
+    <string name="settings_resolution">Resolution</string>
+    <string name="resolution_automatic">Automatic</string>
+    <string name="resolution_custom">Custom</string>
+    <string name="settings_cat_gateway">Gateway</string>
+    <string name="settings_enable_gateway_settings">Enable Gateway</string>
+    <string name="settings_gateway_settings">Gateway Settings</string>
+    <string name="settings_redirect_sdcard">Redirect SDCard</string>
+    <string-array name="redirect_sound_array">
+        <item>Do not play</item>
+        <item>Play on Server</item>
+        <item>Play on Device</item>
+    </string-array>
+    <string-array name="redirect_sound_values_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    
+    <string name="app_title">VDI-Stack</string>
+     <string name="app_name">VDI-Stack</string> 
+ <!-- App settings strings -->
+ <string name="settings_password_present">*******</string> 
+ <string name="settings_password_empty">没有设置</string> 
+ <string name="settings_cat_ui">用户接口</string> 
+ <string name="settings_ui_hide_status_bar">隐藏状态栏</string> 
+ <string name="settings_ui_hide_zoom_controls">隐藏放大控制</string> 
+ <string name="settings_ui_swap_mouse_buttons">交换鼠标按钮</string> 
+ <string name="settings_ui_invert_scrolling">上下翻转</string> 
+ <string name="settings_ui_auto_scroll_touchpointer">触摸焦点自动滚动</string> 
+ <string name="settings_ui_ask_on_exit">显示退出对话框</string> 
+ <string name="settings_cat_power">电源保存</string> 
+ <string name="settings_power_disconnect_timeout">关闭空闲连接</string> 
+ <string name="settings_cat_security">安全</string> 
+ <string name="settings_security_accept_certificates">同意条件</string> 
+ <string name="settings_security_clear_certificate_cache">清除证书缓存</string> 
+ <string name="settings_description_after_minutes">After %1$d Minutes</string> 
+ <string name="settings_description_disabled">关闭</string>
+<!-- Button labels -->
+ <string name="yes">是</string>
+ <string name="no">否</string> 
+ <string name="cancel">关闭</string> 
+ <string name="cont">继续</string> 
+ <string name="login">登录</string> 
+ <string name="logout">注销</string> 
+<!-- Home menu items -->
+ <string name="menu_exit">退出</string> 
+ <string name="menu_about">关于</string> 
+ <string name="menu_help">帮助</string> 
+ <string name="menu_new_bookmark">新建</string> 
+ <string name="menu_app_settings">设置</string> 
+<!-- Bookmark menu items -->
+ <string name="menu_title_bookmark">连接选项</string> 
+ <string name="menu_connect">连接</string> 
+ <string name="menu_edit">编辑</string> 
+ <string name="menu_delete">删除</string> 
+<!-- Session menu items -->
+ <string name="menu_sys_keyboard">键盘</string> 
+ <string name="menu_ext_keyboard">功能键</string> 
+ <string name="menu_touch_pointer">触摸焦点</string> 
+ <string name="menu_home">首页</string> 
+ <string name="menu_disconnect">断开</string> 
+<!-- List section headers -->
+ <string name="section_bookmarks">连接列表</string> 
+ <string name="section_active_sessions">会话</string> 
+<!-- List placeholder labels -->
+ <string name="list_placeholder_login">登录</string> 
+ <string name="list_placeholder_no_servers">没有服务</string> 
+ <string name="list_placeholder_connecting">连接中 ...</string> 
+ <string name="list_placeholder_disconnecting">取消连接 ...</string> 
+ <string name="list_placeholder_connection_error">连接超时</string> 
+ <string name="list_placeholder_wrong_password">错误密码</string> 
+ <string name="list_placeholder_invalid_username">验证用户名</string> 
+ <string name="list_placeholder_add_bookmark">添加链接</string> 
+<!-- Search strings -->
+ <string name="search_label">stack</string> 
+ <string name="search_hint">请输入网址……</string> 
+ <string name="search_settings_description">远程计算机</string> 
+<!-- Bookmark settings strings -->
+ <string name="settings_cat_host">主机</string> 
+ <string name="settings_label">标签</string> 
+ <string name="settings_hostname">主机地址</string> 
+ <string name="settings_port">端口</string> 
+ <string name="settings_cat_credentials">安全设置</string> 
+ <string name="settings_credentials">登录设置</string> 
+ <string name="settings_username">帐号</string> 
+ <string name="settings_password">密码</string> 
+ <string name="settings_domain">域</string> 
+ <string name="settings_cat_settings">设置</string> 
+ <string name="settings_screen">显示设置</string> 
+ <string name="settings_cat_screen">显示设置</string> 
+ <string name="settings_colors">色彩</string>
+ 
+ <string name="settings_width">宽度</string> 
+ <string name="settings_height">高度</string> 
+ <string name="settings_performance">性能</string> 
+ <string name="settings_cat_performance">性能设置</string> 
+ <string name="settings_perf_remotefx">RemoteFX</string> 
+ <string name="settings_perf_wallpaper">桌面背景</string> 
+ <string name="settings_perf_font_smoothing">字体</string> 
+ <string name="settings_perf_desktop_composition">桌面元素</string> 
+ <string name="settings_perf_full_window_drag">拖拽windows目录</string> 
+ <string name="settings_perf_menu_animation">动画菜单</string> 
+ <string name="settings_perf_theming">常用样式</string> 
+ <string name="settings_advanced">高级</string> <string name="settings_cat_advanced">高级设置</string> 
+ <string name="settings_enable_3g_settings">3G 设置</string> <string name="settings_screen_3g">3G 界面</string> 
+ <string name="settings_performance_3g">3G 表现</string> <string name="settings_security">安全</string>
+ <string name="settings_remote_program">远程 程序</string> 
+ <string name="settings_work_dir">工作目录</string> 
+ <string name="settings_console_mode">控制台模式</string>
+ 
+ <!-- Activity titles -->
+ <string name="title_bookmark_settings">连接设置</string> 
+ <string name="title_application_settings">Settings</string> 
+ <string name="title_home">VDI-Stack - android-免费版</string> 
+ <string name="title_create_shortcut">RDP 连接</string> 
+ <string name="title_help">帮助</string> <string name="title_about">关于</string>
+ <!-- Info message strings -->
+ <string name="info_capabilities_changed">欢迎使用嘉值科技VDI-Stack!</string> 
+ <string name="info_reset_success">删除缓存!</string> 
+ <string name="info_reset_failed">删除缓存失败!</string>
+ <!-- Error message strings -->
+ <string name="error_bookmark_incomplete_title">返回并保存？</string> 
+ <string name="error_bookmark_incomplete"> 点击 "关闭" 返回并保存! \n点击 "继续" 不保存，可继续修改参数</string> 
+ <string name="error_connection_failure">连接服务器失败!</string>
+ <!-- Dialog strings -->
+ <string name="dlg_title_verify_certificate">核实，确定</string> 
+ <string name="dlg_msg_verify_certificate">您的身份不能被远程主机验证，您想继续连接吗?</string> 
+ <string name="dlg_title_credentials">请输入你的证书</string> 
+ <string name="dlg_title_create_shortcut">创建简称</string> 
+ <string name="dlg_msg_create_shortcut">简称:</string> 
+ <string name="dlg_msg_connecting">连接中 ...</string> 
+ <string name="dlg_msg_logging_in">登录中 ...</string> 
+ <string name="dlg_title_about">About aFreeRDP</string> 
+ <string name="dlg_msg_about">版本: %1$s\n\u00A9 2013 </string> 
+ <string name="dlg_title_create_bookmark_after_qc">保存连接设置吗?</string> 
+ <string name="dlg_msg_create_bookmark_after_qc">您的连接设置还没有保存!您想保存它们吗?</string> 
+ <string name="dlg_title_save_bookmark">保存连接?</string> 
+ <string name="dlg_save_bookmark">您想保存修改后的连接设置吗?</string> 
+ <string name="dlg_dont_show_again">下次不再询问</string> 
+ <string name="dlg_title_exit">退出?</string> <string name="dlg_msg_exit">您是否确定要退出应用程序?</string> 
+ <string name="dlg_title_clear_cert_cache">删除证书?</string> 
+ <string name="dlg_msg_clear_cert_cache">你确定要删除所有的证书吗?</string>
+</resources>

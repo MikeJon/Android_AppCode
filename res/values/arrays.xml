@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="colors_array">
+        <item>High Color (16 Bit)</item>
+        <item>True Color (24 Bit)</item>
+        <item>Highest Quality (32 Bit)</item>
+    </string-array>
+    <string-array name="colors_values_array">
+        <item>16</item>
+        <item>24</item>
+        <item>32</item>
+    </string-array>
+    <string-array name="resolutions_array">
+        <item>自动</item>
+        <item>手动定制</item>
+        <item>640*480</item>
+        <item>720*480</item>
+        <item>800*600</item>
+        <item>1024*768</item>
+        <item>1280*1024</item>
+        <item>1440*900</item>
+        <item>1920*1080</item>
+        <item>1920*1200</item>
+    </string-array>
+    <string-array name="resolutions_values_array">
+        <item>自动</item>
+        <item>手动定制</item>
+        <item>640*480</item>
+        <item>720*480</item>
+        <item>800*600</item>
+        <item>1024*768</item>
+        <item>1280*1024</item>
+        <item>1440*900</item>
+        <item>1920*1080</item>
+        <item>1920*1200</item>
+    </string-array>
+    <string-array name="security_array">
+        <item>Automatic</item>
+        <item>RDP</item>
+        <item>TLS</item>
+        <item>NLA</item>
+    </string-array>
+    <string-array name="security_values_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+</resources>
