@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="key_height">46dip</dimen>
+     <dimen name="top">250dp</dimen>
+    <dimen name="width">130dp</dimen>
 </resources>

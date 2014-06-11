@@ -8,10 +8,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -71,6 +73,11 @@ public class UpdateServce extends Service implements Runnable{
 			case 3:
 				updateNotification.contentView.setTextViewText(R.id.txt_filesize,"下载失败"); 
 				updateNotificationManager.notify(0,updateNotification);
+				break;
+			case 4:
+				updateNotification.flags = Notification.FLAG_AUTO_CANCEL; 
+				updateNotificationManager.notify(0,updateNotification);
+				installApk();
 				break;
 			default:
 				
@@ -209,10 +216,16 @@ public class UpdateServce extends Service implements Runnable{
 		try {
 			isloader = true;
 			wcFileDownloader = new WcFileDownloader(getApplicationContext(),path+updateMessage.getApkname(),updateFile, 1);
+			File apkfile = new File(Environment.getExternalStorageDirectory().getAbsoluteFile()+"/vdi", updateMessage.getApkname());
+			if (!apkfile.exists()) {
+				wcFileDownloader.clearDate();
+				wcFileDownloader = new WcFileDownloader(getApplicationContext(),path+updateMessage.getApkname(),updateFile, 1);
+			}
 			Message message =handler.obtainMessage(2);
 			handler.sendMessage(message);
 			size =wcFileDownloader.download(wdlplistener);
-			if(size ==wcFileDownloader.getFileSize()){
+			if(size ==wcFileDownloader.getFileSize()&&size != 0){
+				
 				Message message2 =handler.obtainMessage(4);
 				handler.sendMessage(message2);
 			}
@@ -227,7 +240,26 @@ public class UpdateServce extends Service implements Runnable{
 		
 		isloader = false;
 	}
-	
-	
+	/****
+	 * 安装
+	 */
+	private void installApk() {
+		File apkfile = new File(Environment.getExternalStorageDirectory().getAbsoluteFile()+"/vdi", updateMessage.getApkname());
+		if (!apkfile.exists()) {
+			return;
+		}
+	 
+		// 通过Intent安装APK文件
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
+				"application/vnd.android.package-archive");
+		try {
+		    startActivity(i);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 
 }

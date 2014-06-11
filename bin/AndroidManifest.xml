@@ -81,7 +81,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation" 
             android:windowSoftInputMode="adjustResize" />
         <activity android:theme="@style/Theme.Main" 
-            android:label="@string/title_about" 
+            android:label="使用帮助" 
             android:name="com.freerdp.freerdpcore.presentation.AboutActivity" />
         <activity android:theme="@style/Theme.Main" 
             android:label="@string/title_help" 

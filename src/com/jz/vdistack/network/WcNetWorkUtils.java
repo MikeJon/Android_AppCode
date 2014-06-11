@@ -144,9 +144,11 @@ public class WcNetWorkUtils {
 			}
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
+			result ="error";
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			result ="error";
 			e.printStackTrace();
 		}
 		

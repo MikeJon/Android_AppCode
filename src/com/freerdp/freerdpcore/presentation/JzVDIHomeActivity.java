@@ -35,15 +35,17 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.jz.vdistack.R;
-import com.jz.vdistack.fragment.SetingsFragment;
 import com.jz.vdistack.fragment.ViewPageAdapter;
 import com.jz.vdistack.fragment.WcTopView;
 import com.jz.vdistack.fragment.WcViewPage;
@@ -60,22 +62,20 @@ import com.jz.vdistack.update.WcUpdateManage;
  *
  */
 public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChangeListener{
-     private WcViewPage viewPager ;
+     private WcViewPage  viewPager ;
+      
      private ViewPageAdapter vpAdapter;  
      private List<View> views; 
-     private static final int[] pics = { R.drawable.leadpage1,  
-         R.drawable.leadpage2, R.drawable.leadpage3,  
-         R.drawable.point_help,R.drawable.pad_mousewaypic };  
+     public static final int[] pics = { R.drawable.leadpage1,  
+                    R.drawable.leadpage2, R.drawable.vdi_back};  
  //底部小店图片
      private ImageView[] dots ;
      private LinearLayout ll;
  //记录当前选中位置  
      private int currentIndex;  
-     private FragmentTransaction fragmentTransaction;
-     private WcTopView wcTopView;
-   	 protected SetingsFragment setingsFragment;
 	 private int index = 0;
 	 public static JzVDIHomeActivity jzVDIHomeActivity; 
+	 private View content;
 	 
 	
 	@Override
@@ -85,58 +85,51 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 		setContentView(R.layout.vdi_main);
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP,ActionBar.DISPLAY_HOME_AS_UP);
 		getActionBar().hide();
-		wcTopView=(WcTopView)findViewById(R.id.topview);
+		viewPager = (WcViewPage)findViewById(R.id.viewpager);
 		final SharedPreferences spf = getSharedPreferences("FIRST",Context.MODE_MULTI_PROCESS);
 		boolean b =spf.getBoolean("FIRST", true);
+		content = findViewById(R.id.linear);
 		if(b){
-	    wcTopView.setBackgroundColor(getResources().getColor(R.color.wccolor));
-	    TextView textView = new TextView(this);
-	    textView.setGravity(Gravity.CENTER);
-	    textView.setTextColor(getResources().getColor(android.R.color.black));
-	    textView.setTextSize(20);
-	    wcTopView.setIstouche(true);
-	    textView.setText("左右滑动查看操作说明 <点击我知道啦>");
-	    textView.setClickable(true);
-	    textView.setFocusableInTouchMode(true);
-	    textView.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				 Editor e = spf.edit();
-				 e.putBoolean("FIRST", false);
-				 e.commit();
-				 wcTopView.setIstouche(false);
-				 wcTopView.removeAllViews();
-				 wcTopView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-			}
-		});
-	    
-	    Log.v("WC","HHHHHHHHHHHHHHHHHHHHHHHHHHHH::"+WcNetWorkUtils.getMacInfo(this));
-	    FrameLayout.LayoutParams fl = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-	    wcTopView.addView(textView,fl);
-	}
-	   
-		views = new ArrayList<View>();  
-        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  
-	            LinearLayout.LayoutParams.MATCH_PARENT);  
-	          
-	        //初始化引导图片列表  
-	        for(int i=0; i<pics.length; i++) {  
-	            ImageView iv = new ImageView(this);  
-	            iv.setLayoutParams(mParams);  
-	            iv.setScaleType(ScaleType.FIT_XY);
-	            iv.setImageResource(pics[i]);  
-	            views.add(iv);  
-	        }  
-		viewPager = (WcViewPage)findViewById(R.id.viewpager);
-        //初始化Adapter  
-        vpAdapter = new ViewPageAdapter(views);  
-        viewPager.setAdapter(vpAdapter);  
-        //绑定回调  
-        viewPager.setOnPageChangeListener(this);  
-          
-        //初始化底部小点  
-        initDots();  
+	       views = new ArrayList<View>();  
+	       content.setVisibility(View.GONE);
+	       LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.MATCH_PARENT);  
+		        //初始化引导图片列表  
+		        for(int i=0; i<pics.length; i++) {  
+		        	RelativeLayout iv=null;
+		        	iv = new RelativeLayout(this);  
+			        iv.setLayoutParams(mParams);  
+			        iv.setBackgroundResource(pics[i]);
+		        	if(i==pics.length-1){
+		        		Button btn = new Button(this);
+		        		btn.setText("立即体验");
+		        		RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+		        				RelativeLayout.LayoutParams.WRAP_CONTENT);
+		        		rl.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+		        		rl.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		        		btn.setOnClickListener(new OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								Editor e = spf.edit();
+								e.putBoolean("FIRST", false);
+								e.commit();
+								viewPager.setVisibility(View.GONE);
+								ll.setVisibility(View.GONE);
+								content.setVisibility(View.VISIBLE);
+							}
+						});
+		        		iv.addView(btn,rl);
+		        	} 
+		            views.add(iv);  
+		        }  
+	       vpAdapter = new ViewPageAdapter(views);  
+	       viewPager.setAdapter(vpAdapter);  
+	       viewPager.setOnPageChangeListener(this);   
+	       initDots();  
+    	}else{
+    		findViewById(R.id.ll).setVisibility(View.GONE);
+    		content.setVisibility(View.VISIBLE);
+    	}
 		findViewById(R.id.log).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -146,29 +139,14 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 				 
 			}
 		});
-        findViewById(R.id.setings).setOnClickListener(new OnClickListener() {
+        findViewById(R.id.aboutvdi).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				 viewPager.setIsmovew(false);
-				 ll.setVisibility(View.GONE);
-				 index  = 1;
-				 getActionBar().show();
-				 getActionBar().setTitle("设置");
-				 setingsFragment = new SetingsFragment();
-				 fragmentTransaction =getSupportFragmentManager().beginTransaction();
-				 fragmentTransaction.replace(R.id.content, setingsFragment);
-				 fragmentTransaction.setCustomAnimations(R.anim.showgradual, R.anim.gradual);
-				 fragmentTransaction.commit();
-				 fragmentTransaction.show(setingsFragment);
-				 View view = findViewById(R.id.linear);
-				 Animation animation =AnimationUtils.loadAnimation(getBaseContext(), R.anim.gradual);
-				 animation.setAnimationListener(animationListener);
-				 view.startAnimation(animation);  
+				Intent intent= new Intent(JzVDIHomeActivity.this, AboutActivity.class);
+				startActivity(intent);
 			}
 		});
         if(savedInstanceState!=null&&savedInstanceState.getBoolean("UPDATE")){
-        	
         }else{
         	jzVDIHomeActivity = this;
             Intent intent = new Intent(this,UpdateServce.class);
@@ -199,7 +177,7 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.home_menu, menu);
+		//inflater.inflate(R.menu.home_menu, menu);
 		return true;
 	} 
 	
@@ -223,23 +201,6 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 			intent= new Intent(this, AboutActivity.class);
 			break;
 		case android.R.id.home:
-			if(index ==1){
-				 viewPager.setIsmovew(true);
-				 ll.setVisibility(View.VISIBLE);
-				 getActionBar().hide();
-				 fragmentTransaction =getSupportFragmentManager().beginTransaction();
-				 fragmentTransaction.setCustomAnimations(R.anim.showgradual,R.anim.gradual);
-				 fragmentTransaction.commit();
-				 fragmentTransaction.hide(setingsFragment);
-				 View view = findViewById(R.id.linear);
-				 Animation animation =AnimationUtils.loadAnimation(getBaseContext(), R.anim.showgradual);
-				 animation.setAnimationListener(animationListener);
-				 view.startAnimation(animation);  
-				 index=0;
-			}else if(index >=2&&!wcTopView.isIstouche()){
-				  setingsFragment.setDisplayHome();
-			}
-			 
 			break;
 		default:
 			break;
@@ -250,74 +211,9 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 		
 		return true;
 	}
-	
-	
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		if(keyCode==KeyEvent.KEYCODE_BACK&&index!=0){
-			if(index ==1){
-				 viewPager.setIsmovew(true);
-				 ll.setVisibility(View.VISIBLE);
-				 getActionBar().hide();
-				 fragmentTransaction =getSupportFragmentManager().beginTransaction();
-				 fragmentTransaction.setCustomAnimations(R.anim.showgradual,R.anim.gradual);
-				 fragmentTransaction.commit();
-				 fragmentTransaction.hide(setingsFragment);
-				 View view = findViewById(R.id.linear);
-				 Animation animation =AnimationUtils.loadAnimation(getBaseContext(), R.anim.showgradual);
-				 animation.setAnimationListener(animationListener);
-				 view.startAnimation(animation);  
-				 index=0;
-			}else if(index >= 2&&!wcTopView.isIstouche()){
-				 
-				 setingsFragment.setDisplayHome( );
-				  
-			}
-			
-			return false;
-		}
-		return super.onKeyDown(keyCode, event);
-	}
-
-
 	 
 	 
-	private void analysisJson(String str) throws JSONException{
-		JSONObject jsonObject = new JSONObject(str);
-		 
-		
-		//Log.v("WC","KK:"+str);
-	}
 	 
-	 private AnimationListener animationListener = new AnimationListener() {
-		
-		@Override
-		public void onAnimationStart(Animation animation) {
-			// TODO Auto-generated method stub
-			wcTopView.setIstouche(true);
-		}
-		
-		@Override
-		public void onAnimationRepeat(Animation animation) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void onAnimationEnd(Animation animation) {
-			// TODO Auto-generated method stub
-			View ll = findViewById(R.id.linear);
-			if(ll.getVisibility()==View.GONE){
-				ll.setVisibility(View.VISIBLE);
-			}else{
-				ll.setVisibility(View.GONE);
-			}
-			wcTopView.setIstouche(false);
-			
-		}
-	};
-
 	
 
 
@@ -340,6 +236,16 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 	public void onPageSelected(int arg0) {
 		// TODO Auto-generated method stub
 		setCurDot(arg0); 
+		if(arg0 == 2){
+			SharedPreferences spf = getSharedPreferences("FIRST",Context.MODE_MULTI_PROCESS);
+			Editor e = spf.edit();
+			e.putBoolean("FIRST", false);
+			e.commit();
+			viewPager.setVisibility(View.GONE);
+			ll.setVisibility(View.GONE);
+			content.setVisibility(View.VISIBLE);
+		}
+		
 	}
 	
 	private void initDots() {  
@@ -378,7 +284,7 @@ public  class JzVDIHomeActivity extends FragmentActivity implements OnPageChange
 	}  
 	
 	public void setIstouche(boolean bool){
-		wcTopView.setIstouche(bool);
+		 
 	}
 
 

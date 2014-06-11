@@ -11,8 +11,8 @@ import com.android.volley.toolbox.ImageLoader.ImageCache;
 public class BitmapCache implements ImageCache{
 	private LruCache<String, Bitmap> mCache;
     long    lonv = 0;
-    private int size;
-    private int i = 0;
+   
+     
     private static BitmapCache bitmapCache ;
     public static BitmapCache getInstance(){
     	if(bitmapCache==null){
@@ -29,8 +29,6 @@ public class BitmapCache implements ImageCache{
 		mCache = new LruCache<String, Bitmap>(maxSize) {
 			@Override
 			protected int sizeOf(String key, Bitmap value) {
-				lonv = lonv+value.getRowBytes() * value.getHeight();
-				size++;
 				return value.getRowBytes() * value.getHeight();
 			}
             
@@ -66,7 +64,7 @@ public class BitmapCache implements ImageCache{
 	@Override
 	public void putBitmap(String url, Bitmap bitmap) {
 		Bitmap bitmap1 =mCache.get(url);
-		i++;
+	 
 		if(bitmap1 !=null&&!bitmap1.isRecycled()){
 			bitmap1.recycle();
 			

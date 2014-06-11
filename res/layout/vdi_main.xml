@@ -8,6 +8,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:id="@+id/viewpager"
+            
           >
       </com.jz.vdistack.fragment.WcViewPage >
       <LinearLayout   
@@ -16,7 +17,7 @@
          android:layout_width="wrap_content"   
          android:layout_height="wrap_content"   
          android:layout_marginBottom="100dp" 
-         android:layout_alignParentBottom="true"   
+         android:layout_alignParentBottom="true"  
          android:layout_centerHorizontal="true">  
          <ImageView  
             android:layout_width="wrap_content"  
@@ -39,62 +40,34 @@
             android:layout_gravity="center_vertical"  
             android:clickable="true"  
             android:padding="5.0dip"  
-            android:src="@drawable/dot" />  
-  
-        <ImageView  
-            android:layout_width="wrap_content"  
-            android:layout_height="wrap_content"  
-            android:layout_gravity="center_vertical"  
-            android:clickable="true"  
-            android:padding="5.0dip"  
-            android:src="@drawable/dot" />  
-       <ImageView  
-            android:layout_width="wrap_content"  
-            android:layout_height="wrap_content"  
-            android:layout_gravity="center_vertical"  
-            android:clickable="true"  
-            android:padding="5.0dip"  
-            android:src="@drawable/dot" />  
+            android:src="@drawable/dot" />    
     </LinearLayout>  
-    <RelativeLayout 
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/content"
-          ></RelativeLayout>
     <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
+          android:orientation="vertical"
           android:gravity="center_horizontal" 
-          android:layout_alignParentBottom="true"
           android:layout_centerHorizontal="true"
-          android:layout_marginBottom="50dp"
+          android:layout_marginTop="@dimen/top"
           android:id="@+id/linear"
+          android:visibility="gone"
           >
-         <Button 
-             android:layout_width="150dp"
-             android:layout_height="wrap_content"
-             android:id="@+id/setings"
-             android:text="设置"
-             android:textStyle="bold"
-             android:background="@drawable/drawblesettings"
-          />
-	      <Button
-	          android:layout_width="150dp"
+         <Button
+	          android:layout_width="@dimen/width"
 	          android:layout_height="wrap_content"
 	          android:id="@+id/log" 
-	          android:layout_marginLeft="10dp"
-	          android:text="登录"
 	          android:textStyle="bold"
 	          android:background="@drawable/drawblelogin"
 	        />
+         <Button 
+             android:layout_width="@dimen/width"
+             android:layout_height="wrap_content"
+             android:id="@+id/aboutvdi"
+             android:textStyle="bold"
+             android:layout_marginTop="25dp"
+             android:background="@drawable/drawblesettings"
+          />
+	     
       </LinearLayout>
-      <com.jz.vdistack.fragment.WcTopView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/topview"
-          >
-           
-      </com.jz.vdistack.fragment.WcTopView>
-      
+     
 </RelativeLayout>

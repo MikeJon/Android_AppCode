@@ -148,7 +148,10 @@ public class SessionActivity extends BaseActivity
 		    		else
 		    			Log.v(TAG, "Stopping auto-scroll");
 		    		break;
-				}
+		    	
+				}case 8:
+	    			Toast.makeText(SessionActivity.this, "服务器连接错误", Toast.LENGTH_LONG).show();
+	    			break;
 			}
 		}
 	}	
@@ -254,7 +257,6 @@ public class SessionActivity extends BaseActivity
 				
 			 
 			new Thread(new Runnable() {
-				
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
@@ -602,10 +604,10 @@ public class SessionActivity extends BaseActivity
 				// small screen device i.e. phone:
 				// Automatic uses the largest side length of the screen and makes a 16:10 resolution setting out of it 				
 				int screenMax = (screen_width > screen_height) ? screen_width : screen_height;			
-//				screenSettings.setHeight(screenMax);				
-//				screenSettings.setWidth((int)((float)screenMax * 1.6f));
-				screenSettings.setHeight(screen_height);				
-				screenSettings.setWidth(screen_width);	
+				screenSettings.setHeight(screenMax);				
+				screenSettings.setWidth((int)((float)screenMax * 1.6f));
+				//screenSettings.setHeight(screen_height);				
+				//screenSettings.setWidth(screen_width);	
 			}			
 		}
 		if (screenSettings.isFitScreen()) {
@@ -1174,8 +1176,11 @@ public class SessionActivity extends BaseActivity
 			String str =WcNetWorkUtils.getHttpClientString("http://180.153.152.42:3000/desktop/?mac="+WcNetWorkUtils.getMacInfo(getApplicationContext()));
 			 
 			synchronized(rladvertising.getLock()){
-				if(rladvertising.isrun()){
+				if(rladvertising.isrun()&&!str.equals("error")){
 					processIntent(getIntent(),str );
+				}else{
+					Message message = uiHandler.obtainMessage(8);
+					uiHandler.sendMessage(message);
 				}
 				
 			}

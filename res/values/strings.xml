@@ -19,8 +19,8 @@
         <item>2</item>
     </string-array>
     
-    <string name="app_title">VDI-Stack</string>
-     <string name="app_name">VDI-Stack</string> 
+    <string name="app_title">VAS云桌面</string>
+     <string name="app_name">VAS云桌面</string> 
  <!-- App settings strings -->
  <string name="settings_password_present">*******</string> 
  <string name="settings_password_empty">没有设置</string> 

@@ -250,12 +250,19 @@ public  class WcFileDownloader {
 		}
 	}
 	
+	
+	
+	
 	/*****
 	 * ‘›Õ£œ¬‘ÿ
 	 */
 	
 	public void stopDownLoad(){
 		
+	}
+	
+	public void clearDate(){
+		fileService.delete(downloadUrl);
 	}
 
 }
